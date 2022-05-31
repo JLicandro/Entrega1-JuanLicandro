@@ -92,7 +92,7 @@ def observ(request):
 def buscar(request):
     if request.method == "GET":
         formbus = BuscarIndividuosForm()
-        return render(request, 'app1/formbus.html', {"formbus": formbus})
+        return render(request, 'App1/formbus.html', {"formbus": formbus})
 
     elif request.method == "POST":
         formbus = BuscarIndividuosForm(request.POST)
@@ -102,7 +102,7 @@ def buscar(request):
             fisicos = datosfisicos.objects.filter(magnitud__icontains=palabra_a_buscar)
             observaciones = obscasuales.objects.filter(especie__icontains=palabra_a_buscar)
 
-        return  render(request, 'app1/lista_observaciones.html',
+        return  render(request, 'App1/lista_observaciones.html',
             {"individuos": individuos},
             {"fisicos": fisicos}, 
             {"observaciones": observaciones})
