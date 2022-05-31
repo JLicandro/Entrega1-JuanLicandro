@@ -9,7 +9,7 @@ def index(request):
     individuos = individuomedido.objects.all()
     fisicos = datosfisicos.objects.all()
     observaciones = obscasuales.objects.all()
-    template = loader.get_template('~App1/plantillas/lista_observaciones.html')
+    template = loader.get_template('App1/lista_observaciones.html')
     context = {
         'individuos': individuos,
         'fisicos': fisicos,
