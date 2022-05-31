@@ -1,0 +1,134 @@
+{% extends "App1/index.html" %}
+
+{% load bootstrap5 %}
+
+{% block cuerpo %}
+<div class="container"> <!-- Estos son los botones -->    
+  
+  <div class="row">
+    <div class="col">
+      {% url 'ind' as ind_url %}
+      {% url 'buscar' as buscar_url %}
+      {% url 'fis' as fis_url %}
+      {% url 'obs' as obs_url %}
+      {% bootstrap_button "Agregar Individuo muestreado" button_class="btn-success" button_type="link" href=ind_url %} 
+      {% bootstrap_button "Buscar" button_class="btn-success" button_type="link" href=buscar_url %}  
+      {% bootstrap_button "Agregar datos físicos" button_class="btn-success" button_type="link" href=fis_url %}
+      {% bootstrap_button "Agregar observaciones especiales" button_class="btn-success" button_type="link" href=obs_url %}    
+    <div>
+  <div>
+
+  <div class="row"> <!--Esto es individuos-->
+    <div class="col">
+        {% if individuos %}
+        <table class="table">
+            <thead>
+                <th scope="col">Identificador</th>
+                <th scope="col">Especie</th>
+                <th scope="col">N° Ind</th>
+                <th scope="col">Largo_total</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Fecha Muestreo</th>
+                <th scope="col">Km</th>
+                <th scope="col">Estacion</th>
+                <th scope="col">Acciones</th>
+            </thead>
+        
+            {% for p in individuos %}
+            <tbody>
+                <tr>
+                    <th scope="row">{{p.id}} </th>
+                    <td> {{p.especie}} </td>
+                    <td> {{p.nind}} m</td>
+                    <td> {{p.LargoTotal}} m</td>
+                    <td> {{p.peso}} m</td>
+                    <td> {{p.date}} m</td>
+                    <td> {{p.km}} m</td>
+                    <td> {{p.est}} m</td>
+                    {% url 'borrar' identificador=p.id as borrar_url %}
+                    <td>{% bootstrap_button "Borrar" size="sm" button_class="btn-danger" button_type="link" href=borrar_url %}</td>
+                </tr>  
+            </tbody>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p>No tienes registros de organismos del gremio cargados</p>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+<!--Estos son los datos fisicos-->
+<div class="row">
+  <div class="col">
+      {% if fisicos %}
+      <table class="table">
+          <thead>
+              <th scope="col">Identificador</th>
+              <th scope="col">date</th>
+              <th scope="col">km</th>
+              <th scope="col">est</th>
+              <th scope="col">magnitud</th>
+              <th scope="col">medida</th>
+              <th scope="col">unidad</th>
+          </thead>
+      
+          {% for p in fisicos %}
+          <tbody>
+              <tr>
+                  <th scope="row">{{p.id}} </th>
+                  <td> {{p.date}} </td>
+                  <td> {{p.km}} </td>
+                  <td> {{p.est}} </td>
+                  <td> {{p.magnitud}} </td>
+                  <td> {{p.medida}} </td>
+                  <td> {{p.unidad}} </td>
+                  {% url 'borrar' identificador=p.id as borrar_url %}
+                  <td>{% bootstrap_button "Borrar" size="sm" button_class="btn-danger" button_type="link" href=borrar_url %}</td>
+              </tr>  
+          </tbody>
+          {% endfor %}
+      </table>
+      {% else %}
+          <p>No tienes medidas físicas</p>
+      {% endif %}
+  </div>
+</div>
+</div>
+
+<!--Estas son las observaciones excepcionales-->
+<div class="row">
+  <div class="col">
+      {% if observaciones %}
+      <table class="table">
+          <thead>
+              <th scope="col">Identificador</th>
+              <th scope="col">especie</th>
+              <th scope="col">nind</th>
+              <th scope="col">date</th>
+              <th scope="col">obs</th>
+          </thead>
+      
+          {% for p in observaciones %}
+          <tbody>
+              <tr>
+                  <th scope="row">{{p.especie}} </th>
+                  <td> {{p.nind}} </td>
+                  <td> {{p.date}} </td>
+                  <td> {{p.obs}} </td>
+                  {% url 'borrar' identificador=p.id as borrar_url %}
+                  <td>{% bootstrap_button "Borrar" size="sm" button_class="btn-danger" button_type="link" href=borrar_url %}</td>
+              </tr>  
+          </tbody>
+          {% endfor %}
+      </table>
+      {% else %}
+          <p></p>
+      {% endif %}
+  </div>
+</div>
+</div>
+{% endblock %}
+
+
+
