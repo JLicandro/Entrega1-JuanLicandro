@@ -83,6 +83,7 @@
                   <td> {{p.magnitud}} </td>
                   <td> {{p.medida}} </td>
                   <td> {{p.unidad}} </td>
+                  <th scope="col">Acciones</th>
                   {% url 'borrar' identificador=p.id as borrar_url %}
                   <td>{% bootstrap_button "Borrar" size="sm" button_class="btn-danger" button_type="link" href=borrar_url %}</td>
               </tr>  
@@ -111,11 +112,12 @@
       
           {% for p in observaciones %}
           <tbody>
-              <tr>
+              <tr><th scope="row">{{p.id}} </th>
                   <th scope="row">{{p.especie}} </th>
                   <td> {{p.nind}} </td>
                   <td> {{p.date}} </td>
                   <td> {{p.obs}} </td>
+                  <th scope="col">Acciones</th>
                   {% url 'borrar' identificador=p.id as borrar_url %}
                   <td>{% bootstrap_button "Borrar" size="sm" button_class="btn-danger" button_type="link" href=borrar_url %}</td>
               </tr>  
