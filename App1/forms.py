@@ -25,7 +25,7 @@ class fisform(forms.Form):
     medida= forms.FloatField(label="Medida",
         widget=forms.NumberInput(attrs={'placeholder': "10.5"})) #Medida de la magnitud en cuestión
     unidad= forms.CharField(label="Unidad de medida", max_length=10,
-        widget=forms.NumberInput(attrs={'placeholder': "°C"}))
+        widget=forms.TextInput(attrs={'placeholder': "°C"}))
 
 class obsform(forms.Form):
     especie = forms.CharField(label="Nombre de la especie", max_length=100) #Nombre de la especie
