@@ -9,7 +9,7 @@ class indform(forms.Form):
     nind = forms.IntegerField(label="Número de observaciones") #Número de individuo
     LargoTotal = forms.FloatField(label="Largo total",
         widget=forms.NumberInput(attrs={'placeholder': "15.5 mm"}))
-    Peso= forms.FloatField(label="Peso húmedo de el/los individuos",
+    peso= forms.FloatField(label="Peso húmedo de el/los individuos",
         widget=forms.NumberInput(attrs={'placeholder': "1.5 g"})) 
     date= forms.DateField(label="Fecha de muestreo", input_formats=["%d/%m/%Y"],
         widget = forms.TextInput(attrs={'placeholder': '30/12/1995'})) #Fecha de muestreo
